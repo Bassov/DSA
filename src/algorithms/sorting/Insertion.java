@@ -4,7 +4,7 @@ import java.util.Comparator;
 
 public class Insertion implements Sorter {
 
-
+    @Override
     public void sort(Comparable[] toSort) {
         Comparable toInsert;
 
