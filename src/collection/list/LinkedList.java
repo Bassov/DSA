@@ -16,11 +16,11 @@ public class LinkedList<T> {
     }
 
     public final T first() {
-        return head.value;
+        return isEmpty() ? null : head.value;
     }
 
     public final T last() {
-        return tail.value;
+        return isEmpty() ? null : tail.value;
     }
 
     public final void addFirst(final T element) {
