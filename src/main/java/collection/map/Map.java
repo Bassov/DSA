@@ -21,11 +21,11 @@ public interface Map<K, V> {
     V remove(K key);
 
 //    Returns an iterable collection containing all the keys stored in M
-    K[] keySet();
+    Iterable<K> keySet();
 
 //    Returns an iterable collection containing all the values of entries stored in M
 //    (with repetition if multiple keys map to the same value).
-    V[] values();
+    Iterable<V> values();
 
 //    Returns an iterable collection containing all the key-value entries in M.
 //    entrySet() ???
