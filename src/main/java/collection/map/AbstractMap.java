@@ -2,7 +2,6 @@ package collection.map;
 
 public abstract class AbstractMap<K, V> implements Map<K, V> {
 
-    @Override
     public boolean isEmpty() {
         return size() == 0;
     }
@@ -12,24 +11,28 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
         private K key;
         private V value;
 
-        public Entry(K key, V value) {
+        protected Entry(){
+
+        }
+
+        protected Entry(K key, V value) {
             this.key = key;
             this.value = value;
         }
 
-        public K getKey() {
+        protected K getKey() {
             return key;
         }
 
-        public void setKey(K key) {
+        protected void setKey(K key) {
             this.key = key;
         }
 
-        public V getValue() {
+        protected V getValue() {
             return value;
         }
 
-        public V setValue(V value) {
+        protected V setValue(V value) {
             V old = value;
             this.value = value;
             return old;
