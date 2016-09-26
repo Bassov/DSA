@@ -11,10 +11,6 @@ public abstract class AbstractMap<K, V> implements Map<K, V> {
         private K key;
         private V value;
 
-        protected Entry(){
-
-        }
-
         protected Entry(K key, V value) {
             this.key = key;
             this.value = value;

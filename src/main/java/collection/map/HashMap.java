@@ -37,7 +37,7 @@ public class HashMap<K, V> extends AbstractMap<K, V> {
                 break;
             }
 
-            if (container[index].getKey() == key) {
+            if (container[index].getKey().equals(key)) {
                 return container[index].getValue();
             }
         }
@@ -77,8 +77,8 @@ public class HashMap<K, V> extends AbstractMap<K, V> {
         for (int i = 0; i < container.length; i++) {
             int index = hash(hashCode, i);
 
-            if (container[index] == null) {
-                break;
+            if (isEmpty(i)) {
+                return null;
             }
 
             if (container[index].getKey().equals(key)) {
@@ -117,6 +117,14 @@ public class HashMap<K, V> extends AbstractMap<K, V> {
         return values;
     }
 
+    public Entry<K, V>[] getContainer() {
+        return container;
+    }
+
+    public int csize() {
+        return container.length;
+    }
+
     private boolean isEmpty(int i) {
         return container[i] == null || container[i] == DEFUNCT;
     }
@@ -132,7 +140,7 @@ public class HashMap<K, V> extends AbstractMap<K, V> {
     }
 
     private int hash(int hashcode, int i) {
-        return Math.abs(h1(hashcode) + i * h2(hashcode) % container.length);
+        return Math.abs(h1(hashcode) + i * h2(hashcode)) % container.length;
     }
 
     private int h1(int hashCode) {
