@@ -8,7 +8,6 @@
 # output
 out
 target
-target/classes/Main.class
 
 # psvm
 src/main/java/Main.java
