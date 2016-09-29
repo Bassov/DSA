@@ -1,4 +1,4 @@
-package algorithms;
+package algorithms.calculate;
 
 import collection.list.ArrayList;
 import collection.queue.LinkedQueue;
@@ -8,6 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ShuntingYard {
+    // simple calculator that uses ShuntingYard algorithm to calculate expressions
 
     public final LinkedQueue<String> toRPN(final String input) {
         LinkedStack<String> stack = new LinkedStack<>();

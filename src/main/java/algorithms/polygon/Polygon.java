@@ -1,10 +1,12 @@
-package algorithms;
+package algorithms.polygon;
 
 import collection.list.ArrayList;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class PolygonMonteCarloIntegration {
+public class Polygon {
+
+    // Polygon class that uses Monte Carlo integration method for counting area
 
     private static final double INTEGRATION_ACCURACY = 1E-4;
     // provides correct accuracy for tests
@@ -21,10 +23,10 @@ public class PolygonMonteCarloIntegration {
 
     private int vertexNum;
 
-    public PolygonMonteCarloIntegration() {
+    public Polygon() {
     }
 
-    public PolygonMonteCarloIntegration(String points) {
+    public Polygon(String points) {
         Point[] polygon = parseCoordinates(points);
 
         for (Point p : polygon) {
