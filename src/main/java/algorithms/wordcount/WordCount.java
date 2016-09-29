@@ -1,3 +1,8 @@
+package algorithms.wordcount;
+
+import collection.map.HashMap;
+import collection.map.Map;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
