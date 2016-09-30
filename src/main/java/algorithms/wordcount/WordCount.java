@@ -1,5 +1,6 @@
 package algorithms.wordcount;
 
+import collection.list.ArrayList;
 import collection.map.HashMap;
 import collection.map.Map;
 
@@ -16,33 +17,40 @@ public class WordCount {
             "has", "I", "we", "you"
     };
 
-    public String count(String path) {
+    public String count(String path) throws InterruptedException {
         File file = new File(path);
         // My HashMap resizes dynamically
         Map<String, Integer> result = new HashMap<>();
+        ArrayList<Thread> threads = new ArrayList<>();
 
         try {
             Scanner sc = new Scanner(file);
 
             while (sc.hasNextLine()) {
+                final String line = sc.nextLine();
                 Thread t = new Thread(new Runnable() {
                     public void run()
                     {
-                        Map<String, Integer> temp = countInString(sc.nextLine());
+                        Map<String, Integer> temp = countInString(line);
                         mergeMaps(result, temp);
                     }
                 });
-                t.run();
+                threads.add(t);
+                t.start();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+
+        for (Thread t : threads) {
+            t.join();
         }
 
         deleteGarbage(result);
         return findMaxPair(result);
     }
 
-    private void mergeMaps(Map<String, Integer> target, Map<String, Integer> second) {
+    private synchronized void mergeMaps(Map<String, Integer> target, Map<String, Integer> second) {
         for (String str : second.keySet()) {
             int value = second.get(str);
             Integer current = target.get(str);
