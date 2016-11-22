@@ -1,4 +1,4 @@
-package optimization;
+package collection.graph.adj_list;
 
 import java.util.ArrayList;
 import java.util.List;

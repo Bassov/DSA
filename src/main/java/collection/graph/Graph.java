@@ -1,4 +1,4 @@
-package algorithms.shortest_path_dijkstra;
+package collection.graph;
 
 import java.util.*;
 import java.util.stream.Collectors;

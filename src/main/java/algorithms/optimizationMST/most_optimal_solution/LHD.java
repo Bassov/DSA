@@ -1,4 +1,7 @@
-package optimization;
+package algorithms.optimizationMST.most_optimal_solution;
+
+import algorithms.optimizationMST.Graph;
+import algorithms.optimizationMST.MinPriorityQueue;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,14 +15,14 @@ import java.util.Map;
 
 public class LHD {
 
-    private Graph<String, Weight> graph = new Graph<>();
+    private Graph graph = new Graph();
 
     public LHD(String graphPath) {
         this.graph = buildFromFile(graphPath);
     }
 
     private String findShortestPath(String v1, String v2, String kilos) {
-        Graph<String, Weight> graph = optimiseGraph(v1);
+        Graph graph = optimiseGraph(v1);
         double k = Double.parseDouble(kilos);
         // --------------DIJKSTRA INITIALIZATION-------------------------
         MinPriorityQueue<Double, String> pq = new MinPriorityQueue<>();
@@ -33,8 +36,7 @@ public class LHD {
         // --------------DIJKSTRA INITIALIZATION-------------------------
         while (!pq.isEmpty()) {
             String start = pq.pop();
-            graph.neighbors(start).forEach(vertex -> {
-                String v = vertex.value;
+            graph.neighbors(start).forEach(v -> {
                 Weight ev = graph.getEdgeValue(start, v);
                 double distV = distances.get(v) == null ? 0 : distances.get(v);
                 double distStart = distances.get(start);
@@ -62,8 +64,8 @@ public class LHD {
         return String.format("%s %s %.1f %.1f %.1f %.1f %s", v1, v2, k, time, totalCost, d, p);
     }
 
-    private Graph<String, Weight> optimiseGraph(String vertex) {
-        Graph<String, Weight> result = new Graph<>();
+    private Graph optimiseGraph(String vertex) {
+        Graph result = new Graph();
         graph.vertices().forEach(result::insertVertex);
         // --------------DIJKSTRA INITIALIZATION-------------------------
         MinPriorityQueue<Double, String> pq = new MinPriorityQueue<>();
@@ -74,8 +76,7 @@ public class LHD {
         // --------------DIJKSTRA INITIALIZATION-------------------------
         while (!pq.isEmpty()) {
             String start = pq.pop();
-            graph.neighbors(start).forEach(wertex -> {
-                String v = wertex.value;
+            graph.neighbors(start).forEach(v -> {
                 Weight ev = graph.getEdgeValue(start, v);
                 double distV = distances.get(v) == null ? 0 : distances.get(v);
                 double distStart = distances.get(start);
@@ -101,9 +102,9 @@ public class LHD {
         writer.close();
     }
 
-    private Graph<String, Weight> buildFromFile(String path) {
+    private Graph buildFromFile(String path) {
         Path p = Paths.get(path);
-        Graph<String, Weight> result = new Graph<>();
+        Graph result = new Graph();
         try {
             BufferedReader reader = Files.newBufferedReader(p);
             String vertices = reader.readLine();

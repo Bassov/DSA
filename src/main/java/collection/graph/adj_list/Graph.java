@@ -1,4 +1,4 @@
-package optimization;
+package collection.graph.adj_list;
 
 import java.util.HashMap;
 import java.util.List;
